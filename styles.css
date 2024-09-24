@@ -1,0 +1,297 @@
+@font-face {
+    font-family: Montserrat-Bold;
+    src: url(fonts/Montserrat-SemiBold.ttf);
+}
+
+@font-face {
+    font-family: JetBrains;
+    src: url(fonts/JetBrainsMono-Bold.ttf);
+}
+
+body {
+    background-color: #282C34;
+    font-family: JetBrains;
+}
+
+nav {
+    height: 4rem;
+    width: 100%;
+    background-color: #21252B;
+    margin-top: 0;
+    position: fixed;
+}
+
+.banner {
+    gap: 30px;
+    display: flex;
+    justify-content: center;
+    height: 40rem;
+}
+
+.banner img {
+    width: 450px;
+    height: 280px;
+    margin-top: 9rem;
+    margin-right: 15rem;
+    box-shadow: 10px 10px 5px black;
+    border-radius: 1rem;
+}
+
+.red {
+    color: #D54B3F
+}
+
+.green {
+    color: #6AB879;
+}
+
+.orange {
+    color: #D19A66;
+}
+
+.blue {
+    color: #56B6B0;
+}
+
+.nav-buttons {
+    margin-left: 1rem;
+    margin-top: 1rem;
+    position: absolute;
+    display: flex;
+    gap: 15px;
+}
+
+.botao {
+    color: #fff;
+    background-color: #6E7179;
+    border-radius: .2rem;
+    padding: 0.4rem;
+}
+
+.botao:hover {
+    background-color: #22252C;
+    color: #fff;
+    animation: fadeIn 1s;
+}
+
+.text {
+    width: 100%;
+    height: 20rem;
+    color: #fff;
+}
+
+.text h1 {
+    font-size: 50px;
+    margin-top: 10rem;
+    margin-left: 2rem
+}
+
+.text h2 {
+    font-size: 30px;
+    margin-left: 2rem
+}
+
+.subtitle {
+    font-size: 50px;
+    margin-left: 2rem;
+    color: #fff;
+}
+
+.aboutme {
+    color: #fff;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.aboutme .text {
+    font-size: 26px;
+    max-width: 70rem;
+    margin: 1rem;
+    width: fit-content;
+    height: fit-content;
+    background-color: rgba(0, 0, 0, 0.15);
+    border-radius: 1rem;
+}
+
+.aboutme .text p {
+    padding: 1rem;
+    text-align: justify;
+}
+
+.abilities {
+    gap: 4rem;
+    margin: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ability {
+    width: 30rem;
+    height: 30rem;
+    background-color: rgba(0, 0, 0, 0.15);
+    border-radius: 1rem;
+    overflow: auto;
+    transition: transform .2s;
+}
+
+.ability:hover {
+    transform: scale(1.1);
+}
+
+.ability h1 {
+    color: #fff;
+    padding: 2rem;
+    font-size: 40px;
+}
+
+.description {
+    color: #fff;
+    padding-left: 2rem;
+    padding-top: 0.5rem;
+    font-size: 28px;
+}
+
+.cursos {
+    justify-content: center;
+    display: flex;
+}
+
+.cursos .text {
+    background-color: rgba(0, 0, 0, 0.15);
+    margin: 2rem;
+    border-radius: 1rem;
+    padding: 1rem;
+    min-width: fit-content;
+    min-height: fit-content;
+    font-size: 28px;
+    overflow: auto;
+}
+
+.contatos {
+    justify-content: center;
+    display: flex;
+    margin: 2rem;
+}
+
+.contatos .contato {
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.15);
+    margin: 0 2rem 0 2rem;
+    border-radius: 1rem;
+    min-width: fit-content;
+    min-height: fit-content;
+    font-size: 28px;
+    align-items: center;
+    gap: 2rem;
+    transition: transform .2s;
+}
+
+.contatos .contato:hover {
+    transform: scale(1.1);
+}
+
+.contatos .contato a {
+    color: #fff;
+}
+
+.contatos .contato .desc {
+    font-size: 15px;
+}
+
+.contatos .contato .logo {
+    width: 64px;
+    height: 64px;
+}
+
+footer {
+    width: 100%;
+    height: 5rem;
+    background-color: #21252B;
+    justify-content: center;
+    display: flex;
+    color: #868686;
+}
+
+@media (max-width: 510px) {
+    .nav-buttons {
+        opacity: 0;
+    }
+
+    nav {
+        opacity: 0;
+    }
+}
+
+@media (max-width: 900px) {
+    .banner {
+        display: grid;
+        justify-content: center;
+    }
+
+    .banner img {
+        margin-top: 0rem;
+    }
+
+    .text h1 {
+        font-size: 50px;
+        margin-top: 4rem;
+        margin-left: 2rem
+    }
+
+    .first {
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width:1000px) {
+    .ability {
+        width: 25rem;
+    }
+}
+
+@media (max-width:1100px) {
+    .contatos {
+        justify-content: center;
+        display: grid;
+        gap: 1rem;
+    }
+}
+
+@media (max-width:1500px) {
+    .abilities {
+        display: grid
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes zoomin {
+    0% {
+        transform: scale(1, 1);
+    }
+
+    100% {
+        transform: scale(1.1, 1.1);
+    }
+}
+
+@keyframes zoomout {
+    0% {
+        transform: scale(1.1, 1.1);
+    }
+
+    100% {
+        transform: scale(1, 1);
+    }
+}
