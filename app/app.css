@@ -1,8 +1,9 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
+  --font-sans: "JetBrains Mono", ui-monospace, monospace,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
 }
 
 html,
@@ -36,7 +37,7 @@ body {
   overflow: hidden;
   vertical-align: top;
   color: #a2a2a2;
-  font-family: monospace;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
   font-size: clamp(0.18rem, 0.45vw, 0.42rem);
   line-height: 1;
 }
