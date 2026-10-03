@@ -7,4 +7,9 @@ export default defineConfig({
   resolve: {
     tsconfigPaths: true,
   },
+  ssr: {
+    // The package's CommonJS default export is exposed as a module object when
+    // externalized by Node. Bundling it keeps the component import consistent.
+    noExternal: ["react-terminal-ui"],
+  },
 });
