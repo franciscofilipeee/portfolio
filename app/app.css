@@ -17,6 +17,34 @@ body {
   }
 }
 
+.fullscreen-terminal {
+  position: relative;
+}
+
+.language-toggle {
+  position: absolute;
+  top: 8px;
+  right: 15px;
+  z-index: 1;
+  padding: 0.35rem 0.65rem;
+  border: 1px solid #5b626e;
+  border-radius: 4px;
+  background: #252a33;
+  color: #eee;
+  font: inherit;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.language-toggle:hover {
+  background: #363d49;
+}
+
+.language-toggle:focus-visible {
+  outline: 2px solid #22c55e;
+  outline-offset: 3px;
+}
+
 .fullscreen-terminal > .react-terminal-wrapper {
   display: flex;
   width: 100%;
@@ -56,6 +84,20 @@ body {
   overflow: hidden;
 }
 
+.work-history {
+  max-width: 70rem;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.work-history__entry {
+  margin: 1rem 0 1.5rem;
+}
+
+.work-history__entry p {
+  margin-top: 0.35rem;
+}
+
 .resume-preview__header {
   display: flex;
   align-items: center;
@@ -85,6 +127,16 @@ body {
 }
 
 @media (max-width: 640px) {
+  .fullscreen-terminal > .react-terminal-wrapper {
+    padding-top: 100px;
+  }
+
+  .fullscreen-terminal > .react-terminal-wrapper::after {
+    top: 50px;
+    padding: 0 15px;
+    font-size: 0.75rem;
+  }
+
   .ascii-art {
     display: block;
     max-width: 100%;

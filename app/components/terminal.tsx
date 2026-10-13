@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Terminal, { ColorMode, TerminalOutput } from 'react-terminal-ui';
 import Help from './help';
 import { resolveCommand, translations, type Command, type Locale } from '~/i18n';
@@ -54,6 +54,17 @@ const commandOutput = (command: Command, commandId: number, locale: Locale) => {
             return <TerminalOutput key={outputKey}>
                 {t.experiences.map((line, index) => <span key={line}>{index > 0 && <br />}<span className={index === 0 ? 'text-green-500' : ''}>{line}</span></span>)}
             </TerminalOutput>;
+        case 'work':
+            return <TerminalOutput key={outputKey}>
+                <div className="work-history">
+                    {t.work.entries.map((entry) => <section className="work-history__entry" key={entry.company}>
+                        <h2 className="text-green-500">{entry.company}</h2>
+                        <p>{entry.role}</p>
+                        <p><span className="text-green-500">{t.work.periodLabel}:</span> {entry.period}</p>
+                        <p><span className="text-green-500">{t.work.activitiesLabel}:</span> {entry.activities}</p>
+                    </section>)}
+                </div>
+            </TerminalOutput>;
         case 'certifications':
             return <TerminalOutput key={outputKey}>
                 {t.certifications}
@@ -66,6 +77,9 @@ const commandOutput = (command: Command, commandId: number, locale: Locale) => {
 export default function TerminalController() {
     const nextCommandId = useRef(0);
     const [locale, setLocale] = useState<Locale>('en');
+    useEffect(() => {
+        document.documentElement.lang = locale === 'pt' ? 'pt-BR' : 'en';
+    }, [locale]);
     const [terminalLineData, setTerminalLineData] = useState([
         <TerminalOutput key="start1">{translations.en.welcome[0]}</TerminalOutput>,
         <TerminalOutput key="start2">{translations.en.welcome[1]}</TerminalOutput>,
@@ -207,14 +221,28 @@ export default function TerminalController() {
             className="portfolio-terminal fullscreen-terminal h-dvh w-screen overflow-hidden"
             onKeyDown={handleKeyDown}
         >
+            <button
+                type="button"
+                className="language-toggle"
+                onClick={() => setLocale(locale === 'en' ? 'pt' : 'en')}
+                aria-label={locale === 'en' ? 'Switch to Portuguese' : 'Alternar para inglês'}
+                lang={locale === 'en' ? 'pt-BR' : 'en'}
+            >
+                {locale === 'en' ? 'Português' : 'English'}
+            </button>
             <Terminal
-                name="Portfolio - Francisco Filipe (@franciscofilipeee)"
+                name={`${locale === 'pt' ? 'Portfólio' : 'Portfolio'} - Francisco Filipe (@franciscofilipeee)`}
                 height="100%"
                 colorMode={ColorMode.Dark}
                 onInput={handleInput}
                 prompt="user@portfolio:~$"
             >
-                {terminalLineData}
+                {terminalLineData.map((line) => {
+                    const welcomeIndex = ['start1', 'start2', 'start3'].indexOf(String(line.key));
+                    return welcomeIndex >= 0
+                        ? <TerminalOutput key={line.key}>{translations[locale].welcome[welcomeIndex]}</TerminalOutput>
+                        : line;
+                })}
             </Terminal>
         </div>
     );

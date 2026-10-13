@@ -1,6 +1,6 @@
 export type Locale = 'en' | 'pt';
 
-type Command = 'help' | 'neofetch' | 'about' | 'projects' | 'contact' | 'resume' | 'clear' | 'skills' | 'education' | 'experiences' | 'certifications' | 'language' | 'exit';
+type Command = 'help' | 'neofetch' | 'about' | 'projects' | 'contact' | 'resume' | 'clear' | 'skills' | 'education' | 'experiences' | 'work' | 'certifications' | 'language' | 'exit';
 
 type Translation = {
     commands: Record<Command, { name: string; description: string }>;
@@ -11,6 +11,11 @@ type Translation = {
     skills: Array<[string, string]>;
     education: string[];
     experiences: string[];
+    work: {
+        periodLabel: string;
+        activitiesLabel: string;
+        entries: Array<{ company: string; period: string; role: string; activities: string }>;
+    };
     certifications: string;
     resume: { file: string; pages: string; download: string; unsupported: string };
     neofetch: Array<[string, string]>;
@@ -34,6 +39,7 @@ export const translations: Record<Locale, Translation> = {
             skills: { name: 'skills', description: 'Displays my technical skills and proficiencies.' },
             education: { name: 'education', description: 'Provides my educational background.' },
             experiences: { name: 'experiences', description: 'Shows my professional focus and background.' },
+            work: { name: 'work', description: 'Lists companies, employment periods and professional activities.' },
             certifications: { name: 'certifications', description: 'Lists my certifications and achievements.' },
             language: { name: 'language', description: 'Switches language: language en or language pt.' },
             exit: { name: 'exit', description: 'Exits the terminal.' },
@@ -45,9 +51,18 @@ export const translations: Record<Locale, Translation> = {
         skills: [['Frontend & Mobile', 'TypeScript · JavaScript · React · React Native · Tailwind CSS · Bootstrap · HTML · CSS'], ['Backend & Data', 'PHP · Laravel · Java · Spring · MySQL'], ['Cloud, Infrastructure & Systems', 'Google Cloud · AWS · DigitalOcean · Docker · Docker Swarm · Kubernetes · Linux · Ubuntu · Windows'], ['Design & Collaboration', 'Figma · Trello · Discord · Git · GitHub · GitLab · Azure DevOps']],
         education: ['Software Engineering — PUC Minas (currently studying)', 'Technical Degree in Information Technology — POLIMIG, Belo Horizonte'],
         experiences: ['Focus: Full Stack Development', 'Building useful, fast and carefully crafted products across web, mobile, APIs, data and infrastructure.'],
+        work: {
+            periodLabel: 'Period',
+            activitiesLabel: 'Activities',
+            entries: [
+                { company: 'Brunsker Tecnologia LTDA', period: 'October 2025 – present', role: 'Junior Developer / Development Intern', activities: 'Development of B2B/B2C e-commerce with Magento and integration with the Winthor ERP. Development with PHP, Laravel, Inertia.js, React and JavaScript/jQuery, as well as HTML and CSS for other web solutions. Work with Linux/Ubuntu servers, Azure DevOps and Docker.' },
+                { company: 'Fabrika de Softwares SVF LTDA', period: 'August 2022 – October 2025', role: 'Full Stack Web Developer — Young Apprentice', activities: 'Development and maintenance of custom software, automation of manual workflows and productivity improvements. Work with PHP, Laravel, Blade, Vue.js, Inertia.js, Tailwind CSS, Bootstrap 5 and MySQL, as well as AWS, DigitalOcean, Linux and Docker.' },
+                { company: 'Freelance', period: 'May 2021 – July 2022', role: 'Audiovisual Producer', activities: 'Video and image editing with After Effects, Illustrator, Photoshop and Premiere. Video rendering, compression and conversion with HandBrake, and audio editing with Audacity. Creation of streaming media kits, logos, thumbnails and images for social media.' },
+            ],
+        },
         certifications: 'No certifications listed yet. This section will be updated with new achievements.',
         resume: { file: 'resume.pdf', pages: '2 pages', download: '↓ Download PDF', unsupported: 'Your browser does not support PDF previews. Use the download link above.' },
-        neofetch: [['Role', 'Full Stack Developer'], ['Education', 'Software Engineering @ PUC Minas'], ['Technical degree', 'IT @ POLIMIG'], ['Frontend', 'TypeScript · JavaScript · React · React Native'], ['UI', 'Tailwind CSS · Bootstrap · HTML · CSS'], ['Backend', 'PHP · Laravel · Java · Spring'], ['Data', 'MySQL'], ['Cloud', 'Google Cloud · AWS · DigitalOcean'], ['DevOps', 'Docker · Swarm · Kubernetes · Linux'], ['Workflow', 'Git · GitHub · GitLab · Azure DevOps · Figma'], ['Interests', 'Technology · infrastructure · cars'], ['GitHub', 'github.com/franciscofilipeee'], ['LinkedIn', 'linkedin.com/in/franciscofilipeee'], ['Shell', 'portfolio-terminal']],
+        neofetch: [['Role', 'Full Stack Developer'], ['Current work', 'Junior Developer @ Brunsker Tecnologia LTDA (October 2025 - ...)'], ['Education', 'Software Engineering @ PUC Minas'], ['Technical degree', 'IT @ POLIMIG'], ['Frontend', 'TypeScript · JavaScript · React · React Native'], ['UI', 'Tailwind CSS · Bootstrap · HTML · CSS'], ['Backend', 'PHP · Laravel · Java · Spring'], ['Data', 'MySQL'], ['Cloud', 'Google Cloud · AWS · DigitalOcean'], ['DevOps', 'Docker · Swarm · Kubernetes · Linux'], ['Workflow', 'Git · GitHub · GitLab · Azure DevOps · Figma'], ['Interests', 'Technology · infrastructure · cars'], ['GitHub', 'github.com/franciscofilipeee'], ['LinkedIn', 'linkedin.com/in/franciscofilipeee'], ['Shell', 'portfolio-terminal']],
         unknown: "Unknown command: {command}. Type 'help' to see available commands.",
         exit: 'Exiting the terminal...', asciiError: 'Unable to load neofetch artwork.', languageChanged: 'Language changed to English.', languageUsage: 'Usage: language en | language pt',
     },
@@ -63,6 +78,7 @@ export const translations: Record<Locale, Translation> = {
             skills: { name: 'habilidades', description: 'Exibe minhas habilidades técnicas.' },
             education: { name: 'formacao', description: 'Exibe minha formação acadêmica.' },
             experiences: { name: 'experiencias', description: 'Exibe meu foco e experiência profissional.' },
+            work: { name: 'trabalhos', description: 'Lista empresas, períodos e atividades profissionais.' },
             certifications: { name: 'certificacoes', description: 'Lista minhas certificações e conquistas.' },
             language: { name: 'idioma', description: 'Altera o idioma: idioma pt ou idioma en.' },
             exit: { name: 'sair', description: 'Sai do terminal.' },
@@ -74,9 +90,18 @@ export const translations: Record<Locale, Translation> = {
         skills: [['Frontend & Mobile', 'TypeScript · JavaScript · React · React Native · Tailwind CSS · Bootstrap · HTML · CSS'], ['Backend & Dados', 'PHP · Laravel · Java · Spring · MySQL'], ['Cloud, Infraestrutura & Sistemas', 'Google Cloud · AWS · DigitalOcean · Docker · Docker Swarm · Kubernetes · Linux · Ubuntu · Windows'], ['Design & Colaboração', 'Figma · Trello · Discord · Git · GitHub · GitLab · Azure DevOps']],
         education: ['Engenharia de Software — PUC Minas (cursando)', 'Técnico em Informática — POLIMIG, Belo Horizonte'],
         experiences: ['Foco: Desenvolvimento Full Stack', 'Crio produtos úteis, rápidos e bem elaborados em web, mobile, APIs, dados e infraestrutura.'],
+        work: {
+            periodLabel: 'Período',
+            activitiesLabel: 'Atividades',
+            entries: [
+                { company: 'Brunsker Tecnologia LTDA', period: 'Outubro de 2025 – atual', role: 'Desenvolvedor Júnior / Estagiário de Desenvolvimento', activities: 'Desenvolvimento de e-commerces B2B/B2C com Magento e integração com o ERP Winthor. Desenvolvimento com PHP, Laravel, Inertia.js, React e JavaScript/jQuery, além de HTML e CSS para outras soluções web. Atuação com servidores Linux/Ubuntu, Azure DevOps e Docker.' },
+                { company: 'Fabrika de Softwares SVF LTDA', period: 'Agosto de 2022 – outubro de 2025', role: 'Desenvolvedor Web Fullstack — Jovem Aprendiz', activities: 'Desenvolvimento e manutenção de softwares sob demanda, automação de fluxos manuais e melhoria de produtividade. Atuação com PHP, Laravel, Blade, Vue.js, Inertia.js, Tailwind CSS, Bootstrap 5 e MySQL, além de AWS, DigitalOcean, Linux e Docker.' },
+                { company: 'Freelancer', period: 'Maio de 2021 – julho de 2022', role: 'Produtor audiovisual', activities: 'Edição de vídeos e imagens com After Effects, Illustrator, Photoshop e Premiere. Renderização, compressão e conversão de vídeos com HandBrake e edição de áudio com Audacity. Criação de media kits para transmissões, logos, thumbnails e imagens para redes sociais.' },
+            ],
+        },
         certifications: 'Nenhuma certificação cadastrada ainda. Esta seção será atualizada com novas conquistas.',
         resume: { file: 'curriculo.pdf', pages: '2 páginas', download: '↓ Baixar PDF', unsupported: 'Seu navegador não suporta preview de PDF. Use o link de download acima.' },
-        neofetch: [['Cargo', 'Desenvolvedor Full Stack'], ['Formação', 'Engenharia de Software @ PUC Minas'], ['Curso técnico', 'Informática @ POLIMIG'], ['Frontend', 'TypeScript · JavaScript · React · React Native'], ['UI', 'Tailwind CSS · Bootstrap · HTML · CSS'], ['Backend', 'PHP · Laravel · Java · Spring'], ['Dados', 'MySQL'], ['Cloud', 'Google Cloud · AWS · DigitalOcean'], ['DevOps', 'Docker · Swarm · Kubernetes · Linux'], ['Workflow', 'Git · GitHub · GitLab · Azure DevOps · Figma'], ['Interesses', 'Tecnologia · infraestrutura · carros'], ['GitHub', 'github.com/franciscofilipeee'], ['LinkedIn', 'linkedin.com/in/franciscofilipeee'], ['Shell', 'portfolio-terminal']],
+        neofetch: [['Cargo', 'Desenvolvedor Full Stack'], ['Trabalho atual', 'Desenvolvedor Júnior @ Brunsker Tecnologia LTDA (Outubro de 2025 - ...)'], ['Formação', 'Engenharia de Software @ PUC Minas'], ['Curso técnico', 'Informática @ POLIMIG'], ['Frontend', 'TypeScript · JavaScript · React · React Native'], ['UI', 'Tailwind CSS · Bootstrap · HTML · CSS'], ['Backend', 'PHP · Laravel · Java · Spring'], ['Dados', 'MySQL'], ['Cloud', 'Google Cloud · AWS · DigitalOcean'], ['DevOps', 'Docker · Swarm · Kubernetes · Linux'], ['Workflow', 'Git · GitHub · GitLab · Azure DevOps · Figma'], ['Interesses', 'Tecnologia · infraestrutura · carros'], ['GitHub', 'github.com/franciscofilipeee'], ['LinkedIn', 'linkedin.com/in/franciscofilipeee'], ['Shell', 'portfolio-terminal']],
         unknown: "Comando desconhecido: {command}. Digite 'ajuda' para ver os comandos disponíveis.",
         exit: 'Saindo do terminal...', asciiError: 'Não foi possível carregar a arte do neofetch.', languageChanged: 'Idioma alterado para Português.', languageUsage: 'Uso: idioma pt | idioma en',
     },
