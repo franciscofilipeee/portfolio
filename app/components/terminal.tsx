@@ -14,7 +14,14 @@ const commandOutput = (command: Command, commandId: number, locale: Locale) => {
             </TerminalOutput>;
         case 'projects':
             return <TerminalOutput key={outputKey}>
-                <span className="text-green-500">{t.commands.projects.name}/</span> {t.projects.map((line, index) => <span key={line}>{index > 0 && <br />}{line}</span>)}
+                <div className="work-history">
+                    {t.projects.entries.map((project) => <section className="work-history__entry" key={project.name}>
+                        <h3 className="text-green-500">{project.name}</h3>
+                        <p>{project.description}</p>
+                        <p><span className="text-green-500">{t.projects.technologiesLabel}:</span> {project.technologies}</p>
+                        {project.url && <p><a className="resume-preview__download" href={project.url} target="_blank" rel="noopener noreferrer">{t.projects.visitLabel} ↗</a></p>}
+                    </section>)}
+                </div>
             </TerminalOutput>;
         case 'contact':
             return <TerminalOutput key={outputKey}>
@@ -67,7 +74,12 @@ const commandOutput = (command: Command, commandId: number, locale: Locale) => {
             </TerminalOutput>;
         case 'certifications':
             return <TerminalOutput key={outputKey}>
-                {t.certifications}
+                <div className="work-history">
+                    {t.certifications.map((course) => <section className="work-history__entry" key={`${course.institution}-${course.name}`}>
+                        <h2 className="text-green-500">{course.name}</h2>
+                        <p>{course.institution} · {course.period} · {course.duration}</p>
+                    </section>)}
+                </div>
             </TerminalOutput>;
         default:
             return null;

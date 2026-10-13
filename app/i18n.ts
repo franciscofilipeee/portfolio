@@ -6,7 +6,7 @@ type Translation = {
     commands: Record<Command, { name: string; description: string }>;
     welcome: [string, string, string];
     about: string[];
-    projects: string[];
+    projects: { technologiesLabel: string; visitLabel: string; entries: Array<{ name: string; description: string; technologies: string; url?: string }> };
     contact: string[];
     skills: Array<[string, string]>;
     education: string[];
@@ -16,7 +16,7 @@ type Translation = {
         activitiesLabel: string;
         entries: Array<{ company: string; period: string; role: string; activities: string }>;
     };
-    certifications: string;
+    certifications: Array<{ name: string; institution: string; period: string; duration: string }>;
     resume: { file: string; pages: string; download: string; unsupported: string };
     neofetch: Array<[string, string]>;
     unknown: string;
@@ -32,7 +32,7 @@ export const translations: Record<Locale, Translation> = {
             help: { name: 'help', description: 'Displays a list of available commands.' },
             neofetch: { name: 'neofetch', description: 'Shows my profile like a system information tool.' },
             about: { name: 'about', description: 'Provides information about me and my background.' },
-            projects: { name: 'projects', description: 'Shows the kinds of projects I build.' },
+            projects: { name: 'projects', description: 'Lists projects I worked on and their technologies.' },
             contact: { name: 'contact', description: 'Provides my contact information.' },
             resume: { name: 'resume', description: 'Previews and downloads my résumé.' },
             clear: { name: 'clear', description: 'Clears the terminal screen.' },
@@ -46,7 +46,18 @@ export const translations: Record<Locale, Translation> = {
         },
         welcome: ['👋 Welcome to my profile!', '🖥️ I am Francisco Filipe, a Full Stack Developer passionate about technology, cars and innovation.', "⌨️ Type 'help' for a list of available commands."],
         about: ['Francisco Filipe is a Full Stack Developer building web and mobile experiences that solve real problems.', 'He enjoys connecting every layer of a product: interfaces, APIs, databases, infrastructure and deployment.', 'Outside of software, he is passionate about cars, engineering, performance and attention to detail.'],
-        projects: ['Web and mobile experiences, software solutions and infrastructure-focused experiments.', 'Project case studies will be available here soon.'],
+        projects: {
+            technologiesLabel: 'Technologies', visitLabel: 'Visit website',
+            entries: [
+                { name: 'Modfy Brasil', description: 'Web project developed with React, Laravel and MySQL.', technologies: 'React · Laravel · MySQL · Google Cloud · Cloudflare · Tailwind CSS · Docker · Kubernetes', url: 'https://modfybrasil.com' },
+                { name: 'BS Commerce', description: 'Brunsker e-commerce project.', technologies: 'Magento · Knockout.js', url: 'https://brunsker.com.br' },
+                { name: 'BS Notas', description: 'Brunsker solution for managing tax documents.', technologies: 'Angular · Docker · Portainer', url: 'https://brunsker.com.br' },
+                { name: 'BS Chatbot', description: 'Brunsker solution for customer communication and process and sales automation.', technologies: 'Angular · Docker · Portainer', url: 'https://brunsker.com.br' },
+                { name: 'BS Chatbot Mobile', description: 'Mobile application for BS Chatbot, developed with React Native and Expo.', technologies: 'React Native · Expo', url: 'https://brunsker.com.br' },
+                { name: 'BS Portal do Vendedor', description: 'Brunsker web platform for sales management and access to product and performance information.', technologies: 'C# · Angular · Docker · Portainer', url: 'https://brunsker.com.br' },
+                { name: 'CSF', description: 'Web project developed with Laravel and Blade, backed by MySQL and hosted on DigitalOcean with Nginx.', technologies: 'Laravel · MySQL · Nginx · DigitalOcean · Blade' },
+            ],
+        },
         contact: ['GitHub: github.com/franciscofilipeee', 'LinkedIn: linkedin.com/in/franciscofilipeee', "Have an idea or technical challenge? Let's talk."],
         skills: [['Frontend & Mobile', 'TypeScript · JavaScript · React · React Native · Tailwind CSS · Bootstrap · HTML · CSS'], ['Backend & Data', 'PHP · Laravel · Java · Spring · MySQL'], ['Cloud, Infrastructure & Systems', 'Google Cloud · AWS · DigitalOcean · Docker · Docker Swarm · Kubernetes · Linux · Ubuntu · Windows'], ['Design & Collaboration', 'Figma · Trello · Discord · Git · GitHub · GitLab · Azure DevOps']],
         education: ['Software Engineering — PUC Minas (currently studying)', 'Technical Degree in Information Technology — POLIMIG, Belo Horizonte'],
@@ -60,7 +71,13 @@ export const translations: Record<Locale, Translation> = {
                 { company: 'Freelance', period: 'May 2021 – July 2022', role: 'Audiovisual Producer', activities: 'Video and image editing with After Effects, Illustrator, Photoshop and Premiere. Video rendering, compression and conversion with HandBrake, and audio editing with Audacity. Creation of streaming media kits, logos, thumbnails and images for social media.' },
             ],
         },
-        certifications: 'No certifications listed yet. This section will be updated with new achievements.',
+        certifications: [
+            { name: 'Docker for Developers (with Docker Swarm and Kubernetes)', institution: 'Udemy', period: 'December 2025', duration: '13.5 hours' },
+            { name: 'Cloud DevOps Immersion — Docker and Google Cloud', institution: 'Alura', period: 'May 2025', duration: '3 hours' },
+            { name: 'PHP Programming with Laravel, Livewire and SQLite', institution: 'Curso Online de PHP', period: 'November 2024', duration: '6 hours' },
+            { name: 'PHP Programming with Laravel, MySQL/SQLite, Livewire and Inertia.js', institution: 'Pinguim Academy', period: 'May – July 2024', duration: '50 hours' },
+            { name: 'Laravel Course', institution: 'Hora de Codar', period: 'November 2023', duration: '6 hours' },
+        ],
         resume: { file: 'resume.pdf', pages: '2 pages', download: '↓ Download PDF', unsupported: 'Your browser does not support PDF previews. Use the download link above.' },
         neofetch: [['Role', 'Full Stack Developer'], ['Current work', 'Junior Developer @ Brunsker Tecnologia LTDA (October 2025 - ...)'], ['Education', 'Software Engineering @ PUC Minas'], ['Technical degree', 'IT @ POLIMIG'], ['Frontend', 'TypeScript · JavaScript · React · React Native'], ['UI', 'Tailwind CSS · Bootstrap · HTML · CSS'], ['Backend', 'PHP · Laravel · Java · Spring'], ['Data', 'MySQL'], ['Cloud', 'Google Cloud · AWS · DigitalOcean'], ['DevOps', 'Docker · Swarm · Kubernetes · Linux'], ['Workflow', 'Git · GitHub · GitLab · Azure DevOps · Figma'], ['Interests', 'Technology · infrastructure · cars'], ['GitHub', 'github.com/franciscofilipeee'], ['LinkedIn', 'linkedin.com/in/franciscofilipeee'], ['Shell', 'portfolio-terminal']],
         unknown: "Unknown command: {command}. Type 'help' to see available commands.",
@@ -71,7 +88,7 @@ export const translations: Record<Locale, Translation> = {
             help: { name: 'ajuda', description: 'Exibe a lista de comandos disponíveis.' },
             neofetch: { name: 'neofetch', description: 'Mostra meu perfil como uma ferramenta de sistema.' },
             about: { name: 'sobre', description: 'Exibe informações sobre mim e minha trajetória.' },
-            projects: { name: 'projetos', description: 'Mostra os tipos de projetos que desenvolvo.' },
+            projects: { name: 'projetos', description: 'Lista projetos em que trabalhei e suas tecnologias.' },
             contact: { name: 'contato', description: 'Exibe minhas informações de contato.' },
             resume: { name: 'curriculo', description: 'Exibe e permite baixar meu currículo.' },
             clear: { name: 'limpar', description: 'Limpa a tela do terminal.' },
@@ -85,7 +102,18 @@ export const translations: Record<Locale, Translation> = {
         },
         welcome: ['👋 Bem-vindo ao meu perfil!', '🖥️ Eu sou Francisco Filipe, Desenvolvedor Full Stack apaixonado por tecnologia, carros e inovação.', "⌨️ Digite 'ajuda' para ver os comandos disponíveis."],
         about: ['Francisco Filipe é Desenvolvedor Full Stack e cria experiências web e mobile que resolvem problemas reais.', 'Gosta de conectar todas as camadas de um produto: interfaces, APIs, bancos de dados, infraestrutura e deploy.', 'Além do software, é apaixonado por carros, engenharia, desempenho e atenção aos detalhes.'],
-        projects: ['Experiências web e mobile, soluções de software e experimentos voltados à infraestrutura.', 'Os estudos de caso dos projetos estarão disponíveis em breve.'],
+        projects: {
+            technologiesLabel: 'Tecnologias', visitLabel: 'Visitar site',
+            entries: [
+                { name: 'Modfy Brasil', description: 'Projeto web desenvolvido com React, Laravel e MySQL.', technologies: 'React · Laravel · MySQL · Google Cloud · Cloudflare · Tailwind CSS · Docker · Kubernetes', url: 'https://modfybrasil.com' },
+                { name: 'BS Commerce', description: 'Projeto de e-commerce da Brunsker.', technologies: 'Magento · Knockout.js', url: 'https://brunsker.com.br' },
+                { name: 'BS Notas', description: 'Solução da Brunsker para gestão de documentos fiscais.', technologies: 'Angular · Docker · Portainer', url: 'https://brunsker.com.br' },
+                { name: 'BS Chatbot', description: 'Solução da Brunsker para comunicação com clientes e automação de processos e vendas.', technologies: 'Angular · Docker · Portainer', url: 'https://brunsker.com.br' },
+                { name: 'BS Chatbot Mobile', description: 'Aplicativo mobile do BS Chatbot, desenvolvido com React Native e Expo.', technologies: 'React Native · Expo', url: 'https://brunsker.com.br' },
+                { name: 'BS Portal do Vendedor', description: 'Plataforma web da Brunsker para gestão de vendas e acesso a informações de produtos e desempenho.', technologies: 'C# · Angular · Docker · Portainer', url: 'https://brunsker.com.br' },
+                { name: 'CSF', description: 'Projeto web desenvolvido com Laravel e Blade, banco de dados MySQL e hospedagem na DigitalOcean com Nginx.', technologies: 'Laravel · MySQL · Nginx · DigitalOcean · Blade' },
+            ],
+        },
         contact: ['GitHub: github.com/franciscofilipeee', 'LinkedIn: linkedin.com/in/franciscofilipeee', 'Tem uma ideia ou desafio técnico? Vamos conversar.'],
         skills: [['Frontend & Mobile', 'TypeScript · JavaScript · React · React Native · Tailwind CSS · Bootstrap · HTML · CSS'], ['Backend & Dados', 'PHP · Laravel · Java · Spring · MySQL'], ['Cloud, Infraestrutura & Sistemas', 'Google Cloud · AWS · DigitalOcean · Docker · Docker Swarm · Kubernetes · Linux · Ubuntu · Windows'], ['Design & Colaboração', 'Figma · Trello · Discord · Git · GitHub · GitLab · Azure DevOps']],
         education: ['Engenharia de Software — PUC Minas (cursando)', 'Técnico em Informática — POLIMIG, Belo Horizonte'],
@@ -99,7 +127,13 @@ export const translations: Record<Locale, Translation> = {
                 { company: 'Freelancer', period: 'Maio de 2021 – julho de 2022', role: 'Produtor audiovisual', activities: 'Edição de vídeos e imagens com After Effects, Illustrator, Photoshop e Premiere. Renderização, compressão e conversão de vídeos com HandBrake e edição de áudio com Audacity. Criação de media kits para transmissões, logos, thumbnails e imagens para redes sociais.' },
             ],
         },
-        certifications: 'Nenhuma certificação cadastrada ainda. Esta seção será atualizada com novas conquistas.',
+        certifications: [
+            { name: 'Docker para Desenvolvedores (com Docker Swarm e Kubernetes)', institution: 'Udemy', period: 'Dezembro de 2025', duration: '13,5 horas' },
+            { name: 'Imersão Cloud DevOps — Docker e Google Cloud', institution: 'Alura', period: 'Maio de 2025', duration: '3 horas' },
+            { name: 'Programação em PHP com Laravel, Livewire e SQLite', institution: 'Curso Online de PHP', period: 'Novembro de 2024', duration: '6 horas' },
+            { name: 'Programação em PHP com Laravel, MySQL/SQLite, Livewire e Inertia.js', institution: 'Pinguim Academy', period: 'Maio – julho de 2024', duration: '50 horas' },
+            { name: 'Curso de Laravel', institution: 'Hora de Codar', period: 'Novembro de 2023', duration: '6 horas' },
+        ],
         resume: { file: 'curriculo.pdf', pages: '2 páginas', download: '↓ Baixar PDF', unsupported: 'Seu navegador não suporta preview de PDF. Use o link de download acima.' },
         neofetch: [['Cargo', 'Desenvolvedor Full Stack'], ['Trabalho atual', 'Desenvolvedor Júnior @ Brunsker Tecnologia LTDA (Outubro de 2025 - ...)'], ['Formação', 'Engenharia de Software @ PUC Minas'], ['Curso técnico', 'Informática @ POLIMIG'], ['Frontend', 'TypeScript · JavaScript · React · React Native'], ['UI', 'Tailwind CSS · Bootstrap · HTML · CSS'], ['Backend', 'PHP · Laravel · Java · Spring'], ['Dados', 'MySQL'], ['Cloud', 'Google Cloud · AWS · DigitalOcean'], ['DevOps', 'Docker · Swarm · Kubernetes · Linux'], ['Workflow', 'Git · GitHub · GitLab · Azure DevOps · Figma'], ['Interesses', 'Tecnologia · infraestrutura · carros'], ['GitHub', 'github.com/franciscofilipeee'], ['LinkedIn', 'linkedin.com/in/franciscofilipeee'], ['Shell', 'portfolio-terminal']],
         unknown: "Comando desconhecido: {command}. Digite 'ajuda' para ver os comandos disponíveis.",
